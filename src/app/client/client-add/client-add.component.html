@@ -1,0 +1,90 @@
+<div class="container-fluid gradient-bg min-vh-100 d-flex justify-content-center align-items-center">
+  <div class="bg-white p-4 rounded shadow" style="width: 80%; max-width: 1000px;">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="m-0">Cadastro de Clientes</h2>
+    </div>
+
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="inputName4">Nome (Razão Social)</label>
+          <input type="text" class="form-control" id="inputName4" formControlName="name">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="inputDoc4">Documento</label>
+          <input type="text" class="form-control" id="inputDoc4" formControlName="cpfCnpj" >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="inputEmail4">Data Nascimento</label>
+          <input type="date" class="form-control" id="inputDateBirth4" formControlName="birthDate" >
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" formControlName="email">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="inputPhone">Telefone</label>
+        <input type="text" class="form-control" id="inputPhone" formControlName="phone" >
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="freeIE">
+            <label class="form-check-label" for="gridCheck">
+              Isento IE
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <div formGroupName="address">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="inputCity">Rua</label>
+            <input type="text" class="form-control" id="inputStreet" formControlName="street">
+          </div>
+          <div class="col-md-2">
+            <label for="inputZip">Número</label>
+            <input type="text" class="form-control" id="inputNumber" formControlName="number">
+          </div>
+          <div class="col-md-4">
+            <label for="inputState">Bairro</label>
+            <input type="text" class="form-control" id="inputNeighborhood" formControlName="neighborhood">
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="inputCity">Cidade</label>
+            <input type="text" class="form-control" id="inputCity" formControlName="city">
+          </div>
+          <div class="col-md-4">
+            <label for="inputState">Estado</label>
+            <select id="inputState" class="form-control" formControlName="state">
+              <option selected>Choose...</option>
+              <option *ngFor="let estado of states" [value]="estado.sigla">{{ estado.nome }} ({{ estado.sigla }})</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="inputZip">Cep</label>
+            <input type="text" class="form-control" id="inputZip" formControlName="zipCode">
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a class="btn btn-secondary" [routerLink]="['/client-list']">Voltar</a>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+

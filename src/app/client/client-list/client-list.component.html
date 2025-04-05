@@ -1,0 +1,55 @@
+<div class="container-fluid gradient-bg min-vh-100 d-flex justify-content-center align-items-center">
+  <div class="bg-white p-4 rounded shadow" style="width: 80%; max-width: 1000px;">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="m-0">Lista de Clientes</h2>
+      <a class="btn btn-primary" [routerLink]="['/client-add']">Cadastrar Cliente</a>
+    </div>
+
+    <table class="table table-striped table-bordered">
+      <thead class="bg-dark text-white">
+        <tr>
+          <th>Nome</th>
+          <th>Documento</th>
+          <th>E-mail</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.name }}</td>
+          <td>{{ formatDocument(client) }}</td>
+          <td>{{ client.email }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary me-2" (click)="onEdit(client)">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="onDelete(client)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja apagar o registro?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+        <button type="button" class="btn btn-danger" (click)="confirmDelete()">Sim</button>
+      </div>
+    </div>
+  </div>
+</div>
