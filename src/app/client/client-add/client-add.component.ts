@@ -78,8 +78,8 @@ export class ClientAddComponent implements OnInit {
     }
 
     if (isCNPJ) {
-      const ie = clientData.address.ie;
-      const freeIE = clientData.address.freeIE;
+      const ie = clientData.ie;
+      const freeIE = clientData.freeIE;
 
       if (!freeIE && (!ie || ie.trim() === '')) {
         this.toastr.error('Informe a Inscrição Estadual ou marque como isento.');
@@ -102,8 +102,8 @@ export class ClientAddComponent implements OnInit {
         city: clientData.address.city,
         state: clientData.address.state,
       },
-      ie: isCNPJ ? clientData.address.ie : null,
-      freeIE: isCNPJ ? clientData.address.freeIE : false
+      ie: isCNPJ ? clientData.ie : null,
+      freeIE: isCNPJ ? clientData.freeIE : false
     };
 
     this.clientService.addClient(payload).subscribe({
